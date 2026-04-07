@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.2] - 2026-04-08
+
+### Fixed
+- `experimental` already being present in `config.json` no longer prevents `statusLine` from being written — the config check now runs unconditionally before the version sentinel guard, so a missing `statusLine` is always repaired on the next session start
+
 ## [1.3.1] - 2026-04-08
 
 ### Fixed
