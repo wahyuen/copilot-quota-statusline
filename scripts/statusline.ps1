@@ -1,4 +1,4 @@
-# Copilot CLI Status Line Script (Windows PowerShell)
+﻿# Copilot CLI Status Line Script (Windows PowerShell)
 # Fetches premium quota from GitHub API and displays pacing vs month progress.
 
 # 0. Load plugin config — defaults used if file is absent or a key is missing

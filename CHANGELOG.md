@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.1] - 2026-04-08
+
+### Fixed
+- Added UTF-8 BOM to `statusline.ps1` so emoji characters render correctly on all Windows PowerShell configurations
+- Updated setup sentinel to `setup.v1.3.1.done` to trigger a fresh redeploy of the fixed script
+
+### Added
+- `LICENSE` file (MIT)
+- "Why I built this" intro section in README
+
 ## [1.3.0] - 2026-04-07
 
 ### Added

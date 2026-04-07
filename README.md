@@ -1,5 +1,7 @@
 # copilot-quota-statusline
 
+> I found myself "rationing" my Copilot quota toward the end of each month without really knowing where I stood. I wanted a passive, always-visible way to see how my usage was pacing against the calendar — so I built this plugin to show that right in the CLI footer without having to think about it.
+
 A [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli) plugin that shows your **premium quota usage and month pacing** in the CLI status line footer.
 
 ```
@@ -181,4 +183,4 @@ Then remove the `statusLine` block from `~/.copilot/config.json` and delete `~/.
 
 ## License
 
-MIT
+[MIT](LICENSE)
