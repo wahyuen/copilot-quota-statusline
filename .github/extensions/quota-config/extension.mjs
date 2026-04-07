@@ -198,7 +198,7 @@ await joinSession({
                     return `Reset **${key}** to default: \`${displayDef}\`.`;
                 }
 
-                writeConfig({});
+                writeConfig({ ...DEFAULTS });
                 return "All quota-statusline settings reset to defaults.";
             },
         },
