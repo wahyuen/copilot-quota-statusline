@@ -1,0 +1,11 @@
+{
+  "name": "copilot-quota-statusline",
+  "description": "Shows GitHub Copilot premium quota usage and month pacing in the CLI status line footer",
+  "version": "1.0.0",
+  "author": {
+    "name": "wahyu"
+  },
+  "license": "MIT",
+  "keywords": ["statusline", "quota", "premium", "pacing"],
+  "hooks": "hooks.json"
+}
