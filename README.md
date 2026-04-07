@@ -14,7 +14,70 @@ The bar on the left (`Q:`) is quota used this month. The bar on the right (`M:`)
 | `~~` (yellow) | Within 5% of pace — on track |
 | `!!` (red) | More than 5% over pace — burning quota too fast |
 
-## Prerequisites: Enable the experimental status line
+Everything is customisable — bar characters, colours, icons. Emojis work too:
+
+```
+Q:[🟩🟩🟩░░░░░░░░░] 24.4% | M:[🟦🟦🟦░░░░░░░░░] 23.3% | ✅ 1.1% ahead
+```
+
+## Customising the display
+
+All visual settings are stored in `~/.copilot/plugins/quota-statusline/config.json`. The easiest way to change them is to ask Copilot directly — the `quota-config` extension ships with the plugin and provides three tools the agent can call on your behalf.
+
+### Using the Copilot CLI extension
+
+Just ask in natural language:
+
+```
+show my quota statusline config
+set the filled bar character to █
+set the unfilled character to ░
+change the ahead icon to ✅ and the behind icon to 🚨
+set the on pace icon to ~~
+make the quota bar color cyan
+reset all quota statusline settings to defaults
+```
+
+The extension tools (`quota_config_show`, `quota_config_set`, `quota_config_reset`) read and write the config file directly. Changes take effect on the next status line refresh (within 30 seconds — no restart needed).
+
+### Available settings
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| `filledChar` | `#` | Filled bar character — any string, e.g. `█`, `▓`, `🟩` |
+| `unfilledChar` | `.` | Unfilled bar character — e.g. `░`, `─`, `⬜` |
+| `barWidth` | `12` | Bar width in character positions (reduce when using wide emoji) |
+| `quotaBarColor` | `35` (magenta) | Colour of the Q: bar |
+| `monthBarColor` | `34` (blue) | Colour of the M: bar |
+| `aheadIcon` | `OK` | Pace icon when ahead — e.g. `✅`, `😎`, `🟢` |
+| `onPaceIcon` | `~~` | Pace icon when on pace — e.g. `⚡`, `👌`, `🟡` |
+| `behindIcon` | `!!` | Pace icon when behind — e.g. `🚨`, `⚠️`, `🔴` |
+| `aheadColor` | `32` (green) | Colour for the ahead indicator |
+| `onPaceColor` | `33` (yellow) | Colour for the on-pace indicator |
+| `behindColor` | `31` (red) | Colour for the behind indicator |
+
+**Colour values** accept a colour name (`red`, `green`, `blue`, `yellow`, `magenta`, `cyan`, `white`, with a `bright_` prefix for brighter variants) or a raw ANSI code (`30`–`37`, `90`–`97`).
+
+**Emoji notes:** Emojis are double-width characters. If you use them as `filledChar`/`unfilledChar`, set `barWidth` to a smaller value (e.g. `6`) so the bar doesn't overflow its column. Emoji pace icons (`aheadIcon`, etc.) work at any width since they're standalone.
+
+### Editing the config file directly
+
+The config file is plain JSON. All keys are optional — missing keys fall back to their defaults:
+
+```json
+{
+  "filledChar": "█",
+  "unfilledChar": "░",
+  "barWidth": 10,
+  "quotaBarColor": "cyan",
+  "monthBarColor": "blue",
+  "aheadIcon": "✅",
+  "onPaceIcon": "~~",
+  "behindIcon": "🚨"
+}
+```
+
+
 
 The status line footer is an **experimental feature** that must be opted into before it will appear. Add `"experimental": true` to your `~/.copilot/config.json`:
 
