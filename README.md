@@ -14,6 +14,20 @@ The bar on the left (`Q:`) is quota used this month. The bar on the right (`M:`)
 | `~~` (yellow) | Within 5% of pace — on track |
 | `!!` (red) | More than 5% over pace — burning quota too fast |
 
+## Prerequisites: Enable the experimental status line
+
+The status line footer is an **experimental feature** that must be opted into before it will appear. Add `"experimental": true` to your `~/.copilot/config.json`:
+
+```json
+{
+  "experimental": true
+}
+```
+
+If the file already exists, just add the key alongside your other settings. Then restart the CLI — you should see a footer bar appear at the bottom of the screen.
+
+> The plugin's `sessionStart` hook sets this automatically when it runs, so if you install the plugin first and start a new session, it will be enabled for you.
+
 ## Requirements
 
 - Windows with PowerShell 5.1+
