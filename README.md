@@ -25,10 +25,8 @@ The bar on the left (`Q:`) is quota used this month. The bar on the right (`M:`)
 ## Install
 
 ```
-copilot plugin install OWNER/copilot-quota-statusline
+copilot plugin install wahyuen/copilot-quota-statusline
 ```
-
-Replace `OWNER` with the GitHub username hosting this repo.
 
 On the next session start, the plugin automatically:
 1. Writes `statusline.ps1` and a launcher to `~/.copilot/plugins/quota-statusline/`
