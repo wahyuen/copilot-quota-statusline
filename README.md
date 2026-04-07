@@ -3,21 +3,21 @@
 A [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli) plugin that shows your **premium quota usage and month pacing** in the CLI status line footer.
 
 ```
-Q:[###.........] 24.4% | M:[###.........] 23.3% | ~~ on pace
+Q:[████░░░░░░░░] 24.4% | M:[███░░░░░░░░░] 23.3% | 🟢 1.1% ahead
 ```
 
 The bar on the left (`Q:`) is quota used this month. The bar on the right (`M:`) is how far through the calendar month you are. The pace indicator tells you if you're on track:
 
 | Icon | Meaning |
 |------|---------|
-| `OK` (green) | More than 5% under pace — ahead of budget |
-| `~~` (yellow) | Within 5% of pace — on track |
-| `!!` (red) | More than 5% over pace — burning quota too fast |
+| 🟢 (green) | More than 5% under pace — ahead of budget |
+| 🟡 (yellow) | Within 5% of pace — on track |
+| 🔴 (red) | More than 5% over pace — burning quota too fast |
 
-Everything is customisable — bar characters, colours, icons. Emojis work too:
+Everything is customisable — bar characters, colours, icons, labels. Emojis work too:
 
 ```
-Q:[🟩🟩🟩░░░░░░░░░] 24.4% | M:[🟦🟦🟦░░░░░░░░░] 23.3% | ✅ 1.1% ahead
+Quota Used:[🟩🟩🟩░░░░░░░░░] 24.4% | Monthly Progress:[🟦🟦🟦░░░░░░░░░] 23.3% | ✅ 1.1% ahead
 ```
 
 ## Customising the display
@@ -30,10 +30,10 @@ Just ask in natural language:
 
 ```
 show my quota statusline config
-set the filled bar character to █
-set the unfilled character to ░
+set the filled bar character to #
 change the ahead icon to ✅ and the behind icon to 🚨
-set the on pace icon to ~~
+set the on pace text to "on track"
+set the quota label to "Quota Used"
 make the quota bar color cyan
 reset all quota statusline settings to defaults
 ```
@@ -44,14 +44,19 @@ The extension tools (`quota_config_show`, `quota_config_set`, `quota_config_rese
 
 | Key | Default | Description |
 |-----|---------|-------------|
-| `filledChar` | `#` | Filled bar character — any string, e.g. `█`, `▓`, `🟩` |
-| `unfilledChar` | `.` | Unfilled bar character — e.g. `░`, `─`, `⬜` |
+| `filledChar` | `█` | Filled bar character — any string, e.g. `#`, `▓`, `🟩` |
+| `unfilledChar` | `░` | Unfilled bar character — e.g. `.`, `─`, `⬜` |
 | `barWidth` | `12` | Bar width in character positions (reduce when using wide emoji) |
-| `quotaBarColor` | `35` (magenta) | Colour of the Q: bar |
-| `monthBarColor` | `34` (blue) | Colour of the M: bar |
-| `aheadIcon` | `OK` | Pace icon when ahead — e.g. `✅`, `😎`, `🟢` |
-| `onPaceIcon` | `~~` | Pace icon when on pace — e.g. `⚡`, `👌`, `🟡` |
-| `behindIcon` | `!!` | Pace icon when behind — e.g. `🚨`, `⚠️`, `🔴` |
+| `quotaBarColor` | `35` (magenta) | Colour of the quota bar |
+| `monthBarColor` | `34` (blue) | Colour of the month bar |
+| `quotaLabel` | `Q` | Label prefix for the quota bar — e.g. `Quota Used` |
+| `monthLabel` | `M` | Label prefix for the month bar — e.g. `Monthly Progress` |
+| `aheadIcon` | `🟢` | Pace icon when ahead — e.g. `OK`, `✅`, `😎` |
+| `onPaceIcon` | `🟡` | Pace icon when on pace — e.g. `~~`, `⚡`, `👌` |
+| `behindIcon` | `🔴` | Pace icon when behind — e.g. `!!`, `🚨`, `⚠️` |
+| `aheadText` | `ahead` | Pacing text when ahead — e.g. `under budget` |
+| `onPaceText` | `on pace` | Pacing text when on pace — e.g. `on track` |
+| `behindText` | `behind` | Pacing text when behind — e.g. `over budget` |
 | `aheadColor` | `32` (green) | Colour for the ahead indicator |
 | `onPaceColor` | `33` (yellow) | Colour for the on-pace indicator |
 | `behindColor` | `31` (red) | Colour for the behind indicator |
@@ -66,14 +71,19 @@ The config file is plain JSON. All keys are optional — missing keys fall back 
 
 ```json
 {
-  "filledChar": "█",
-  "unfilledChar": "░",
+  "filledChar": "#",
+  "unfilledChar": ".",
   "barWidth": 10,
+  "quotaLabel": "Quota Used",
+  "monthLabel": "Monthly Progress",
   "quotaBarColor": "cyan",
   "monthBarColor": "blue",
   "aheadIcon": "✅",
   "onPaceIcon": "~~",
-  "behindIcon": "🚨"
+  "behindIcon": "🚨",
+  "aheadText": "under budget",
+  "onPaceText": "on track",
+  "behindText": "over budget"
 }
 ```
 

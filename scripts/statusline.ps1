@@ -11,14 +11,19 @@ function Get-Cfg([string]$key, $default) {
     return $default
 }
 
-$filledChar   = Get-Cfg 'filledChar'    '#'
-$unfilledChar = Get-Cfg 'unfilledChar'  '.'
+$filledChar   = Get-Cfg 'filledChar'    '█'
+$unfilledChar = Get-Cfg 'unfilledChar'  '░'
 $barWidth     = [int](Get-Cfg 'barWidth' 12)
 $quotaColor   = Get-Cfg 'quotaBarColor' '35'
 $monthColor   = Get-Cfg 'monthBarColor' '34'
-$aheadIcon    = Get-Cfg 'aheadIcon'     'OK'
-$onPaceIcon   = Get-Cfg 'onPaceIcon'    '~~'
-$behindIcon   = Get-Cfg 'behindIcon'    '!!'
+$quotaLabel   = Get-Cfg 'quotaLabel'    'Q'
+$monthLabel   = Get-Cfg 'monthLabel'    'M'
+$aheadIcon    = Get-Cfg 'aheadIcon'     '🟢'
+$onPaceIcon   = Get-Cfg 'onPaceIcon'    '🟡'
+$behindIcon   = Get-Cfg 'behindIcon'    '🔴'
+$aheadText    = Get-Cfg 'aheadText'     'ahead'
+$onPaceText   = Get-Cfg 'onPaceText'    'on pace'
+$behindText   = Get-Cfg 'behindText'    'behind'
 $aheadColor   = Get-Cfg 'aheadColor'   '32'
 $onPaceColor  = Get-Cfg 'onPaceColor'  '33'
 $behindColor  = Get-Cfg 'behindColor'  '31'
@@ -60,21 +65,21 @@ if ($null -ne $usedPct) {
     if ($diff -lt -5) {
         $icon      = $aheadIcon
         $paceAnsi  = "$esc[${aheadColor}m"
-        $diffLabel = "$([math]::Abs([math]::Round($diff, 1)))% ahead"
+        $diffLabel = "$([math]::Abs([math]::Round($diff, 1)))% $aheadText"
     } elseif ($diff -gt 5) {
         $icon      = $behindIcon
         $paceAnsi  = "$esc[${behindColor}m"
-        $diffLabel = "$([math]::Round($diff, 1))% behind"
+        $diffLabel = "$([math]::Round($diff, 1))% $behindText"
     } else {
         $icon      = $onPaceIcon
         $paceAnsi  = "$esc[${onPaceColor}m"
-        $diffLabel = "on pace"
+        $diffLabel = $onPaceText
     }
 
     $quotaBar = Get-MiniBar $usedPct "$esc[${quotaColor}m"
     $monthBar = Get-MiniBar $monthPct "$esc[${monthColor}m"
-    Write-Output "Q:$quotaBar $usedPct% | M:$monthBar $monthPct% | ${paceAnsi}${icon} ${diffLabel}${rst}"
+    Write-Output "${quotaLabel}:$quotaBar $usedPct% | ${monthLabel}:$monthBar $monthPct% | ${paceAnsi}${icon} ${diffLabel}${rst}"
 } else {
     $monthBar = Get-MiniBar $monthPct "$esc[${monthColor}m"
-    Write-Output "Quota:? | M:$monthBar $monthPct% ($elapsedDays/$daysInMonth)"
+    Write-Output "${quotaLabel}:? | ${monthLabel}:$monthBar $monthPct% ($elapsedDays/$daysInMonth)"
 }
