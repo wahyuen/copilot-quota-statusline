@@ -4,7 +4,7 @@
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 # 0. Load plugin config — defaults used if file is absent or a key is missing
-$pluginDir = if ($env:CLAUDE_PLUGIN_DATA) { $env:CLAUDE_PLUGIN_DATA } else { Join-Path $env:USERPROFILE '.copilot\plugins\quota-statusline' }
+$pluginDir = if ($env:CLAUDE_PLUGIN_DATA) { $env:CLAUDE_PLUGIN_DATA } elseif ($PSScriptRoot) { $PSScriptRoot } else { Join-Path $env:USERPROFILE '.copilot\plugins\quota-statusline' }
 $cfgPath   = Join-Path $pluginDir 'config.json'
 $cfg       = if (Test-Path $cfgPath) { try { Get-Content $cfgPath -Raw | ConvertFrom-Json } catch { $null } } else { $null }
 

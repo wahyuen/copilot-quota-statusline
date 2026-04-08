@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.6] - 2026-04-08
+
+### Fixed
+- Custom config (e.g. emoji bar characters) was silently ignored — the Copilot CLI does not inject `CLAUDE_PLUGIN_DATA` into the statusline subprocess, so `statusline.ps1` fell back to a path that doesn't exist and used hardcoded defaults. The script now uses `$PSScriptRoot` as a fallback, which always resolves to the correct directory since the script and `config.json` are co-located.
+
 ## [1.3.5] - 2026-04-08
 
 ### Fixed

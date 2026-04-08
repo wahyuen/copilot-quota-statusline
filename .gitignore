@@ -1,2 +1,5 @@
 # Plugin data directory written by the setup hook
 plugins/quota-statusline/
+
+# Local Copilot instructions (may contain personal details)
+.github/copilot-instructions.md
