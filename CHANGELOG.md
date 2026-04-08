@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.5] - 2026-04-08
+
+### Fixed
+- Emoji pace icons (🟢🟡🔴) rendered as purple diamonds — PowerShell's default stdout encoding is IBM 850 (DOS), which corrupts multi-byte Unicode before the CLI reads it. `statusline.ps1` now sets `[Console]::OutputEncoding = [System.Text.Encoding]::UTF8` at startup
+
 ## [1.3.4] - 2026-04-08
 
 ### Fixed

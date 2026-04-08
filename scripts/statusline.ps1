@@ -1,6 +1,8 @@
 ﻿# Copilot CLI Status Line Script (Windows PowerShell)
 # Fetches premium quota from GitHub API and displays pacing vs month progress.
 
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
 # 0. Load plugin config — defaults used if file is absent or a key is missing
 $pluginDir = if ($env:CLAUDE_PLUGIN_DATA) { $env:CLAUDE_PLUGIN_DATA } else { Join-Path $env:USERPROFILE '.copilot\plugins\quota-statusline' }
 $cfgPath   = Join-Path $pluginDir 'config.json'
