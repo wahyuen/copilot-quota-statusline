@@ -4,10 +4,10 @@
 
 A [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli) plugin that shows your **premium quota usage and month pacing** in the CLI status line footer.
 
-```ansi
-Q:[[35m████████░░░░[0m] 65.2% | M:[[34m█████░░░░░░░[0m] 45.1% | [33m🟡 on pace[0m
-Q:[[35m███░░░░░░░░░[0m] 28.3% | M:[[34m█████░░░░░░░[0m] 45.1% | [32m🟢 16.8% ahead[0m
-Q:[[35m████████░░░░[0m] 65.2% | M:[[34m█████░░░░░░░[0m] 45.1% | [31m🔴 20.1% behind[0m
+```
+Q:[████████░░░░] 65.2% | M:[█████░░░░░░░] 45.1% | 🟡 on pace
+Q:[███░░░░░░░░░] 28.3% | M:[█████░░░░░░░] 45.1% | 🟢 16.8% ahead
+Q:[████████░░░░] 65.2% | M:[█████░░░░░░░] 45.1% | 🔴 20.1% behind
 ```
 
 The bar on the left (`Q:`) is quota used this month. The bar on the right (`M:`) is how far through the calendar month you are. The pace indicator tells you if you're on track:
