@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.3] - 2026-04-08
+
+### Fixed
+- `hooks.json` had a UTF-8 BOM which caused the CLI JSON parser to reject it with `Invalid JSON: Unexpected token` — the `sessionStart` hook was silently skipped on every launch, so setup never ran
+
 ## [1.3.2] - 2026-04-08
 
 ### Fixed
