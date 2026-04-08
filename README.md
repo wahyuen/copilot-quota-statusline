@@ -1,25 +1,28 @@
-# copilot-quota-statusline
+﻿# copilot-quota-statusline
 
 > I found myself "rationing" my Copilot quota toward the end of each month without really knowing where I stood. I wanted a passive, always-visible way to see how my usage was pacing against the calendar — so I built this plugin to show that right in the CLI footer without having to think about it.
 
 A [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli) plugin that shows your **premium quota usage and month pacing** in the CLI status line footer.
 
-```
-Q:[████░░░░░░░░] 24.4% | M:[███░░░░░░░░░] 23.3% | 🟢 1.1% ahead
+```ansi
+Q:[[35m████████░░░░[0m] 65.2% | M:[[34m█████░░░░░░░[0m] 45.1% | [33m🟡 on pace[0m
+Q:[[35m███░░░░░░░░░[0m] 28.3% | M:[[34m█████░░░░░░░[0m] 45.1% | [32m🟢 16.8% ahead[0m
+Q:[[35m████████░░░░[0m] 65.2% | M:[[34m█████░░░░░░░[0m] 45.1% | [31m🔴 20.1% behind[0m
 ```
 
 The bar on the left (`Q:`) is quota used this month. The bar on the right (`M:`) is how far through the calendar month you are. The pace indicator tells you if you're on track:
 
-| Icon | Meaning |
-|------|---------|
-| 🟢 (green) | More than 5% under pace — ahead of budget |
-| 🟡 (yellow) | Within 5% of pace — on track |
-| 🔴 (red) | More than 5% over pace — burning quota too fast |
+| Colour | Meaning |
+|--------|---------|
+| 🟢 green | More than 5% under pace — ahead of budget |
+| 🟡 yellow | Within 5% of pace — on track |
+| 🔴 red | More than 5% over pace — burning quota too fast |
 
 Everything is customisable — bar characters, colours, icons, labels. Emojis work too:
 
 ```
-Quota Used:[🟩🟩🟩░░░░░░░░░] 24.4% | Monthly Progress:[🟦🟦🟦░░░░░░░░░] 23.3% | ✅ 1.1% ahead
+Quota Used:[🟩🟩🟩🟩░░░░░░░░] 36.4% | Monthly Progress:[🟦🟦🟦░░░░░░░░] 26.7% | 🔴 9.7% behind
+Q:[🦭🦭🦭🌊🌊🌊] 52.3% | M:[🦭🦭🌊🌊🌊🌊] 33.3% | 🦑 on pace
 ```
 
 ## Customising the display
