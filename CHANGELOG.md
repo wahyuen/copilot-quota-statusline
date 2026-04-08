@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.4] - 2026-04-08
+
+### Fixed
+- README documented incorrect plugin data path (`~/.copilot/plugins/quota-statusline/`) — the Copilot CLI sets `CLAUDE_PLUGIN_DATA` to `~/.copilot/plugin-data/_direct/copilot-quota-statusline/`, which is now reflected throughout the docs
+
 ## [1.3.3] - 2026-04-08
 
 ### Fixed
