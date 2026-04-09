@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.9] - 2026-04-09
+
+### Fixed
+- Hook sentinel filename was still hardcoded as `setup.v1.3.7.done` after the version was bumped to 1.3.8 — users who had 1.3.7 previously would have the sentinel already present, causing the hook to skip setup on install of 1.3.8. Sentinel is now `setup.v1.3.9.done`.
+- Hook checked only for the *presence* of the `experimental` key in `.copilot/config.json`, not its value — if a user had previously reset `experimental: false`, the hook would not re-enable it. Now correctly re-sets it to `true` when the key exists but is falsy.
+
 ## [1.3.8] - 2026-04-09
 
 ### Fixed
