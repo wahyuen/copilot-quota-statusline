@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.7] - 2026-04-09
+
+### Fixed
+- `hooks.json` UTF-8 BOM re-introduced by the v1.3.6 editor save — caused the CLI JSON parser to reject the file and silently skip the `sessionStart` hook, so setup never ran on a fresh install
+
 ## [1.3.6] - 2026-04-08
 
 ### Fixed
