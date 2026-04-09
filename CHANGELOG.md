@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.8] - 2026-04-09
+
+### Fixed
+- `statusline.ps1` could go missing after install, leaving the statusline silent — the `sessionStart` hook now always re-writes `statusline.ps1` and `statusline.cmd` on every session start, before checking the done-marker. Only the initial `config.json` (which users may customise) is skipped when the done-marker exists. This also refreshes the embedded script on plugin updates.
+
 ## [1.3.7] - 2026-04-09
 
 ### Fixed
